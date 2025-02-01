@@ -23,7 +23,7 @@ def step_impl(context):
 def step_impl(context):
     dashboard_page = DashBoardPage(context.driver)
     for rows in context.table:
-        dashboard_page.verify_welcome_message_and_username(rows['username'], rows['message'])
+        dashboard_page.verify_welcome_message_and_username(rows['username'], rows['welcome message'])
 
 @when(u'I enter my email address')
 def step_impl(context):

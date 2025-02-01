@@ -14,8 +14,8 @@ Feature: User login
       | inlaze@test.com | Test123. |
     And I click on the sign in button
     Then the user is redirected to the welcome screen where the user can see his or her user name
-      | username             | welcome message  |
-      | Frank Camilo Atencio | Welcome to Lorem |
+      | username    | welcome message  |
+      | inlaze test | Welcome to Lorem |
 
   @TC-LG-002 @LOGIN
   Scenario: Incomplete form

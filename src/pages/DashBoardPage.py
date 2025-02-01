@@ -34,7 +34,7 @@ class DashBoardPage:
 
         expected_username = WebDriverWait(self.driver, 20).until(
             ec.visibility_of_element_located((By.XPATH, self.username_xpath))).text
-        assert expected_username.__eq__(username)
+        assert username.__eq__(expected_username)
 
     def click_menu(self):
         """
