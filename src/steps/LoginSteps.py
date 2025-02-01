@@ -22,7 +22,8 @@ def step_impl(context):
 @then(u'the user is redirected to the welcome screen where the user can see his or her user name')
 def step_impl(context):
     dashboard_page = DashBoardPage(context.driver)
-    dashboard_page.verify_welcome_message("Welcome to Lorem")
+    for rows in context.table:
+        dashboard_page.verify_welcome_message_and_username(rows['username'], rows['message'])
 
 @when(u'I enter my email address')
 def step_impl(context):

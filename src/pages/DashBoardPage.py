@@ -12,6 +12,7 @@ class DashBoardPage:
     # XPath locators for Dashboard elements
     wellcome_message_xpath = "//h2[contains(text(),'Welcome to Lorem')]"
     menu_xpath = "//label[contains(@class, 'avatar')]"
+    username_xpath = "(//h2)[1]"
     logout_option_xpath = "Logout"
 
     def __init__(self, driver):
@@ -21,14 +22,19 @@ class DashBoardPage:
         """
         self.driver = driver
 
-    def verify_welcome_message(self, expected_message):
+    def verify_welcome_message_and_username(self, username, message):
         """
         Verifies that the welcome message is displayed correctly.
-        :param expected_message: Expected text of the welcome message
+        :param message: Expected text of the welcome message
+        :param username: Expected username
         """
-        message = WebDriverWait(self.driver, 20).until(
+        expected_message = WebDriverWait(self.driver, 20).until(
             ec.visibility_of_element_located((By.XPATH, self.wellcome_message_xpath))).text
         assert message.__eq__(expected_message)
+
+        expected_username = WebDriverWait(self.driver, 20).until(
+            ec.visibility_of_element_located((By.XPATH, self.username_xpath))).text
+        assert expected_username.__eq__(username)
 
     def click_menu(self):
         """
