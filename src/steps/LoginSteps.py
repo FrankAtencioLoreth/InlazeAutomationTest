@@ -45,10 +45,10 @@ def step_impl(context):
     dashboard_page = DashBoardPage(context.driver)
     dashboard_page.click_logout_option()
 
-@then(u'the user is redirected to the login screen "{expected_message}"')
-def step_impl(context, expected_message):
+@then(u'the user is redirected to the login screen "{message}"')
+def step_impl(context, message):
     login_page = LoginPage(context.driver)
-    login_page.check_login_title(expected_message)
+    login_page.check_login_title(message)
 
 @when(u'I enter my login credentials for a user that doesn\'t exist')
 def step_impl(context):
@@ -57,7 +57,7 @@ def step_impl(context):
         login_page.enter_email(rows['email'])
         login_page.enter_password(rows['password'])
 
-@then(u'an informative message is displayed "{expected_message}"')
-def step_impl(context, expected_message):
+@then(u'an informative message is displayed "{message}"')
+def step_impl(context, message):
     login_page = LoginPage(context.driver)
-    login_page.check_user_not_found_message(expected_message)
+    login_page.check_user_not_found_message(message)

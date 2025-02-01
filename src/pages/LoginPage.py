@@ -3,6 +3,9 @@ from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.wait import WebDriverWait
 
 class LoginPage:
+    """
+    This class represents the Login page and provides methods to interact with its elements.
+   """
 
     # XPath locators for the login elements
     page_title_xpath = "//h1[text()='Sign in']"
@@ -57,7 +60,7 @@ class LoginPage:
        Clicks the register link to navigate to the sign-up page.
        """
         url = WebDriverWait(self.driver, 20).until(
-            ec.element_to_be_clickable((By.XPATH, self.url_register_xpath)))
+            ec.element_to_be_clickable((By.LINK_TEXT, self.url_register_xpath)))
         url.click()
 
 
@@ -68,7 +71,7 @@ class LoginPage:
         login_button = WebDriverWait(self.driver, 20).until(
             ec.visibility_of_element_located((By.XPATH, self.button_login_xpath))
         )
-        if login_button.is_enabled():
+        if login_button.get_attribute("disabled").__contains__("disabled"):
             assert login_button.is_enabled() == True
         else:
             assert login_button.is_enabled() == False
