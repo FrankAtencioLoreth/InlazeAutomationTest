@@ -22,7 +22,6 @@ Feature: User registration
     And I fill out the registration form using full name, email and a valid password for the system
       | full name | email           | password | confirm password |
       | Frank     | random@test.com | Test123. | Test123.         |
-    And in the full name field I only enter a single word
     And click on the sign up button
     Then the user is not registered
 
@@ -32,7 +31,7 @@ Feature: User registration
     And I fill out the registration form using full name, email and a valid password for the system
       | full name | email          | password | confirm password |
       | Frank     | randomtest.com | Test123. | Test123.         |
-    And click on the button Sing up
+    And click on the sign up button
     Then the user is not registered
 
   @TC-RU-004 @REGISTER
@@ -50,7 +49,7 @@ Feature: User registration
     And I fill out the registration form using full name, email and a valid password for the system
       | full name | email | password | confirm password |
       |           |       |          |                  |
-    And I click on the button sign up
+    And click on the sign up button
     Then the sign up button is not enabled
 
   @TC-RU-006 @REGISTER

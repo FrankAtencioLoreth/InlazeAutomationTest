@@ -1,11 +1,12 @@
+import allure
 from selenium import webdriver
 from src.utilities import ConfigReader
 
 
 def before_scenario(context, driver):
     """
-       This function is executed before each scenario.
-       It reads the browser type from the configuration file and initializes the WebDriver accordingly.
+    This function is executed before each scenario.
+    It reads the browser type from the configuration file and initializes the WebDriver accordingly.
     """
 
     browser_name = ConfigReader.read_config("config", "browser")
@@ -27,10 +28,19 @@ def before_scenario(context, driver):
 
 def after_scenario(context, driver):
     """
-        This function is executed after each scenario.
-        It closes the WebDriver to clean up resources.
+    This function is executed after each scenario.
+    It closes the WebDriver to clean up resources.
     """
     context.driver.quit()
 
-def before_all(context):
-    pass
+def after_step(context, step):
+    """
+    This function is executed after each step.
+    It's take screenshot if the step failed.
+    """
+    if step.status == "failed":
+        allure.attach(
+            context.driver.get_screenshot_as_png(),
+            name="failed_screenshot",
+            attachment_type=allure.attachment_type.PNG,
+        )

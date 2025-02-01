@@ -32,7 +32,7 @@ def step_impl(context, message):
     register_page = RegisterPage(context.driver)
     register_page.check_error_message_check_password(message)
 
-@then(u'the user is successfully registered in the system "{expected_message}"')
+@then(u'the user is successfully registered in the system "{message}"')
 def step_impl(context, message):
    register_page = RegisterPage(context.driver)
    register_page.check_successful_registration_message(message)
