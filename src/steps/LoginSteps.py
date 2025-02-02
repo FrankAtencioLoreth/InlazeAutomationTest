@@ -1,4 +1,3 @@
-import time
 from behave import given, when, then
 from src.pages.LoginPage import LoginPage
 from src.pages.DashBoardPage import DashBoardPage

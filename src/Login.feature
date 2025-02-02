@@ -32,6 +32,8 @@ Feature: User login
       | inlaze@test.com | Test123. |
     And I click on the sign in button
     Then the user is redirected to the welcome screen where the user can see his or her user name
+      | username    | welcome message  |
+      | inlaze test | Welcome to Lorem |
     When the user clicks on the profile icon
     And clicks on the logout option
     Then the user is redirected to the login screen "Sign in"
